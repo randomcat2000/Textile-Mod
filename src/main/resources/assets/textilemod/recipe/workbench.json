@@ -1,6 +1,6 @@
 [
   {
-    "name": "minecraft:workbench/cotton_string",
+    "name": "textilemod:workbench/cotton_string",
     "type": "minecraft:crafting/shapeless",
     "inputs": [
       {

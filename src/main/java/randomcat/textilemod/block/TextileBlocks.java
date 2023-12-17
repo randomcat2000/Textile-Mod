@@ -16,17 +16,17 @@ public class TextileBlocks {
 
 	public static Block cottonWool;
 	public void blockInit(){
-		final Block cottonGin = new BlockBuilder(TextileMod.MOD_ID)
-			.setBlockSound(BlockSounds.WOOD)
-			.setHardness(2.5f)
-			.setTopTexture("gintop.png")
-			.setBottomTexture("ginbottom.png")
-			.setNorthTexture("ginfront.png")
-			.setSouthTexture("ginfront.png")
-			.setWestTexture("ginside1.png")
-			.setEastTexture("ginside2.png")
-			.build(new BlockCottonGin("cottongin", 3200, Material.wood)
-			.withTags(BlockTags.MINEABLE_BY_AXE));
+//		final Block cottonGin = new BlockBuilder(TextileMod.MOD_ID)
+//			.setBlockSound(BlockSounds.WOOD)
+//			.setHardness(2.5f)
+//			.setTopTexture("gintop.png")
+//			.setBottomTexture("ginbottom.png")
+//			.setNorthTexture("ginfront.png")
+//			.setSouthTexture("ginfront.png")
+//			.setWestTexture("ginside1.png")
+//			.setEastTexture("ginside2.png")
+//			.build(new BlockCottonGin("cottongin", 3200, Material.wood)
+//			.withTags(BlockTags.MINEABLE_BY_AXE));
 		cottonWool = new BlockBuilder(TextileMod.MOD_ID)
 			.setBlockSound(BlockSounds.CLOTH)
 			.setHardness(0.5f)
