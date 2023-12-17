@@ -1,0 +1,168 @@
+
+TNT:
+extends Block {
+    public BlockTNT(String key, int id) {
+        super(key, id, Material.explosive);
+    }
+
+    @Override
+    public void onBlockAdded(World world, int i, int j, int k) {
+        super.onBlockAdded(world, i, j, k);
+        if (world.isBlockIndirectlyGettingPowered(i, j, k)) {
+            this.ignite(world, i, j, k, true);
+        }
+    }
+
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, int blockId) {
+        if (blockId > 0 && Block.blocksList[blockId].canProvidePower() && world.isBlockIndirectlyGettingPowered(x, y, z)) {
+            this.ignite(world, x, y, z, true);
+        }
+    }
+
+    @Override
+    public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int x, int y, int z, int meta, TileEntity tileEntity) {
+        if (dropCause == EnumDropCause.EXPLOSION) {
+            return null;
+        }
+        return new ItemStack[]{new ItemStack(this)};
+    }
+
+    @Override
+    public void onBlockDestroyedByExplosion(World world, int x, int y, int z) {
+        EntityTNT entity = new EntityTNT(world, (float)x + 0.5f, (float)y + 0.5f, (float)z + 0.5f);
+        entity.fuse = world.rand.nextInt(entity.fuse / 4) + entity.fuse / 8;
+        world.entityJoinedWorld(entity);
+    }
+
+    public void ignite(World world, int x, int y, int z, boolean sound) {
+        this.ignite(world, x, y, z, null, sound);
+    }
+
+    public void ignite(World world, int x, int y, int z, EntityPlayer player, boolean sound) {
+        if (world.isClientSide) {
+            world.playSoundEffect(SoundType.WORLD_SOUNDS, (float)x + 0.5f, (float)y + 0.5f, (float)z + 0.5f, "random.fuse", 1.0f, 1.0f);
+            if (player != null && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof ItemFirestriker) {
+                player.inventory.getCurrentItem().damageItem(1, player);
+            }
+            return;
+        }
+        world.setBlockWithNotify(x, y, z, 0);
+        EntityTNT e = new EntityTNT(world, (float)x + 0.5f, (float)y + 0.5f, (float)z + 0.5f);
+        world.entityJoinedWorld(e);
+        world.playSoundAtEntity(e, "random.fuse", 1.0f, 1.0f);
+        if (player != null && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof ItemFirestriker) {
+            player.inventory.getCurrentItem().damageItem(1, player);
+        }
+    }
+
+    @Override
+    public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
+        if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ItemFirestriker) {
+            world.setBlockMetadata(x, y, z, 1);
+        }
+        super.onBlockClicked(world, x, y, z, player);
+    }
+
+    @Override
+    public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
+        if (player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof ItemFirestriker) {
+            this.ignite(world, x, y, z, player, true);
+            return true;
+        }
+        return super.blockActivated(world, x, y, z, player);
+    }
+}
+
+Jukebox
+
+extends BlockTileEntity {
+    public BlockJukeBox(String key, int id) {
+        super(key, id, Material.wood);
+    }
+
+    @Override
+    public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
+        if (world.getBlockMetadata(x, y, z) == 0) {
+            return false;
+        }
+        this.ejectRecord(world, x, y, z);
+        return true;
+    }
+
+    public void playRecord(World world, int i, int j, int k, int l) {
+        if (!world.isClientSide) {
+            TileEntityRecordPlayer tileentityrecordplayer = (TileEntityRecordPlayer)world.getBlockTileEntity(i, j, k);
+            tileentityrecordplayer.record = l;
+            tileentityrecordplayer.onInventoryChanged();
+            world.setBlockMetadataWithNotify(i, j, k, 1);
+        }
+    }
+
+    public void ejectRecord(World world, int i, int j, int k) {
+        if (world.isClientSide) {
+            return;
+        }
+        TileEntityRecordPlayer tileentityrecordplayer = (TileEntityRecordPlayer)world.getBlockTileEntity(i, j, k);
+        int l = tileentityrecordplayer.record;
+        if (l != 0) {
+            world.playSoundEffect(1005, i, j, k, 0);
+            world.playRecord(null, i, j, k);
+            tileentityrecordplayer.record = 0;
+            tileentityrecordplayer.onInventoryChanged();
+            world.setBlockMetadataWithNotify(i, j, k, 0);
+            int i1 = l;
+            float f = 0.7f;
+            double d = (double)(world.rand.nextFloat() * f) + (double)(1.0f - f) * 0.5;
+            double d1 = (double)(world.rand.nextFloat() * f) + (double)(1.0f - f) * 0.2 + 0.6;
+            double d2 = (double)(world.rand.nextFloat() * f) + (double)(1.0f - f) * 0.5;
+            EntityItem entityitem = new EntityItem(world, (double)i + d, (double)j + d1, (double)k + d2, new ItemStack(i1, 1, 0));
+            entityitem.delayBeforeCanPickup = 10;
+            world.entityJoinedWorld(entityitem);
+        }
+    }
+
+    @Override
+    public void onBlockRemoval(World world, int x, int y, int z) {
+        this.ejectRecord(world, x, y, z);
+        super.onBlockRemoval(world, x, y, z);
+    }
+
+    @Override
+    protected TileEntity getNewBlockEntity() {
+        return new TileEntityRecordPlayer();
+    }
+}
+
+seeds
+
+extends Item {
+    private int cropsId;
+
+    public ItemSeeds(String name, int id, Block cropsBlock) {
+        super(name, id);
+        this.cropsId = cropsBlock.id;
+    }
+
+    @Override
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced) {
+        if (!world.canPlaceInsideBlock(blockX, blockY, blockZ)) {
+            blockX += side.getOffsetX();
+            blockY += side.getOffsetY();
+            blockZ += side.getOffsetZ();
+        }
+        if (world.getBlockId(blockX, blockY - 1, blockZ) == Block.farmlandDirt.id && world.canPlaceInsideBlock(blockX, blockY, blockZ)) {
+            world.setBlockWithNotify(blockX, blockY, blockZ, this.cropsId);
+            world.playBlockSoundEffect((float)blockX + 0.5f, (float)blockY + 0.5f, (float)blockZ + 0.5f, Block.blocksList[this.cropsId], EnumBlockSoundEffectType.PLACE);
+            itemstack.consumeItem(entityplayer);
+            return true;
+        }
+        return false;
+    }
+
+    public class ItemPebble
+    extends Item {
+        public ItemPebble(String name, int id) {
+            super(name, id);
+            this.maxStackSize = 64;
+        }

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
-  "version": "${version}",
+  "id": "textilemod",
+  "version": "${1}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
+  "name": "Textiles!",
+  "description": "Adds cotton and a variety of fabrics",
   "authors": [
-    "Turnip Labs"
+    "randomcat2000"
   ],
   "contact": {
     "homepage": "",
@@ -18,7 +18,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-        "turniplabs.examplemod.ExampleMod"
+        "randomcat.textilemod.TextileMod"
     ]
   },
   "mixins": [
