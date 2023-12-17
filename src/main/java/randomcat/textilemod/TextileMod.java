@@ -1,15 +1,13 @@
 package randomcat.textilemod;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import net.minecraft.core.*;
 import randomcat.textilemod.item.TextileItems;
 import randomcat.textilemod.block.TextileBlocks;
-import turniplabs.halplibe.helper.*;
+import turniplabs.halplibe.util.GameStartEntrypoint;
 
-public class TextileMod implements ModInitializer {
+public class TextileMod implements ModInitializer, GameStartEntrypoint {
 	public static final String MOD_ID = "textilemod";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -19,6 +17,15 @@ public class TextileMod implements ModInitializer {
 
 		new TextileItems().itemsInit();
 		new TextileBlocks().blockInit();
+	}
+	@Override
+	public void beforeGameStart() {
+
+	}
+
+	@Override
+	public void afterGameStart() {
+
 	}
 }
 

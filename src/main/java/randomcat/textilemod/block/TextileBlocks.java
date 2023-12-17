@@ -14,6 +14,7 @@ import turniplabs.halplibe.helper.BlockBuilder;
 
 public class TextileBlocks {
 
+	public static Block cottonWool;
 	public void blockInit(){
 		final Block cottonGin = new BlockBuilder(TextileMod.MOD_ID)
 			.setBlockSound(BlockSounds.WOOD)
@@ -26,5 +27,11 @@ public class TextileBlocks {
 			.setEastTexture("ginside2.png")
 			.build(new BlockCottonGin("cottongin", 3200, Material.wood)
 			.withTags(BlockTags.MINEABLE_BY_AXE));
+		cottonWool = new BlockBuilder(TextileMod.MOD_ID)
+			.setBlockSound(BlockSounds.CLOTH)
+			.setHardness(0.5f)
+			.setTextures("cottonwoolPH.png")
+			.build(new Block("cottonwool",3201, Material.cloth)
+			.withTags(BlockTags.MINEABLE_BY_SHEARS));
 	}
 }

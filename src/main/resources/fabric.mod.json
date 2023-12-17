@@ -19,7 +19,13 @@
   "entrypoints": {
     "main": [
         "randomcat.textilemod.TextileMod"
-    ]
+    ],
+		"afterGameStart": [
+				"randomcat.textilemod.TextileMod"
+		],
+		"recipesReady": [
+			"randomcat.textilemod.recipe.TextileRecipes"
+		]
   },
   "mixins": [
       "examplemod.mixins.json"
