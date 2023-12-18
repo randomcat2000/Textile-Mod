@@ -1,21 +1,23 @@
 package randomcat.textilemod.recipe;
 
+import net.minecraft.core.block.Block;
 import net.minecraft.core.data.DataLoader;
 import net.minecraft.core.data.registry.Registries;
-import net.minecraft.core.data.registry.recipe.RecipeNamespace;
-import net.minecraft.core.data.registry.recipe.RecipeRegistry;
+import net.minecraft.core.data.registry.recipe.*;
+import net.minecraft.core.data.registry.recipe.entry.RecipeEntryCrafting;
+import net.minecraft.core.item.ItemStack;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
+import java.util.Arrays;
 
 public class TextileRecipes implements RecipeEntrypoint {
-	/*private void craftingRecipesBlocks(){
-		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(TextileBlocks.cottonWool,1),new Object[]{new ItemStack(TextileItems.cottonFiber,1),new ItemStack(TextileItems.cottonFiber,1),new ItemStack(TextileItems.cottonFiber,1),new ItemStack(TextileItems.cottonFiber,1)});
-	}*/
+
 	public final RecipeNamespace TEXTILEMOD = new RecipeNamespace();
+	public static final RecipeGroup<RecipeEntryCrafting<?,?>> WORKBENCH = new RecipeGroup<>(new RecipeSymbol(new ItemStack(Block.workbench)));
 
 	@Override
 	public void onRecipesReady() {
-		TEXTILEMOD.register("workbench", Registries.RECIPES.WORKBENCH);
+		TEXTILEMOD.register("workbench", WORKBENCH);
 		Registries.RECIPES.register("textilemod", this.TEXTILEMOD);
 		DataLoader.loadRecipes("/assets/textilemod/recipe/workbench.json");
 		}
