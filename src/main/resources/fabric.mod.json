@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "textilemod",
-  "version": "${1}",
+  "version": "1",
 
   "name": "Textiles!",
   "description": "Adds cotton and a variety of fabrics",

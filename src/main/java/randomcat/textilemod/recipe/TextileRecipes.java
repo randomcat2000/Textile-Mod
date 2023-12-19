@@ -1,11 +1,16 @@
 package randomcat.textilemod.recipe;
 
 import net.minecraft.core.block.Block;
+import net.minecraft.core.crafting.legacy.CraftingManager;
 import net.minecraft.core.data.DataLoader;
 import net.minecraft.core.data.registry.Registries;
 import net.minecraft.core.data.registry.recipe.*;
 import net.minecraft.core.data.registry.recipe.entry.RecipeEntryCrafting;
 import net.minecraft.core.item.ItemStack;
+import randomcat.textilemod.block.BlockCottonGin;
+import randomcat.textilemod.block.TextileBlocks;
+import randomcat.textilemod.item.TextileItems;
+import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 import java.lang.reflect.*;
 
