@@ -10,7 +10,7 @@ version = project.mod_version
 loom {
 	gluedMinecraftJar()
 	noIntermediateMappings()
-	customMinecraftManifest.set("https://github.com/randomcat2000/Textile-Mod/releases/download/ignore/7.1-pre1a.json")
+	customMinecraftManifest.set("https://github.com/Turnip-Labs/bta-manifest-repo/releases/download/v${project.bta_version}/${project.bta_version}.json")
 }
 
 repositories {
