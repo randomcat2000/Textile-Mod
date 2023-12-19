@@ -1,6 +1,6 @@
 --VERY EARLY WIP--
 
-mod that aims to add cotton and various cotton derived materials to BTA.
+mod that aims to add cotton and various cotton derived materials to BTA. /b
 currently implemented:
 cotton item, currently unobtainable
 cotton gin, obtainable once i get these damn recipes working
