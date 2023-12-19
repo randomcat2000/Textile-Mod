@@ -7,6 +7,7 @@ import net.minecraft.core.data.registry.recipe.*;
 import net.minecraft.core.data.registry.recipe.entry.RecipeEntryCrafting;
 import net.minecraft.core.item.ItemStack;
 import turniplabs.halplibe.util.RecipeEntrypoint;
+import java.lang.reflect.*;
 
 import java.util.Arrays;
 
