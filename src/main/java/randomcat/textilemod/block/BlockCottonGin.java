@@ -12,7 +12,7 @@ import static randomcat.textilemod.item.TextileItems.*;
 
 public class BlockCottonGin extends Block {
 	//Debug variable
-	private int timesused = 1;
+	//private int timesused = 1;
 	//"a" for "again"
 	private byte a = 1;
 	public BlockCottonGin(String key, int id, Material material) {
@@ -24,8 +24,8 @@ public class BlockCottonGin extends Block {
 	public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
 		if (player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof ItemCotton) {
 			//debug stuff
-			System.out.println("cotton found" + timesused);
-			timesused++;
+			//System.out.println("cotton found" + timesused);
+			//timesused++;
 			EntityItem item = world.dropItem(x, y, z, new ItemStack(cottonSeeds));
 			//Do 4 times
 			for (a = 1; a < 5; a++){

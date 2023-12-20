@@ -47,6 +47,31 @@
     "consumeContainers": true
   },
   {
+    "name": "textilemod:workbench/cottonwool",
+    "type": "minecraft:crafting/shaped",
+    "pattern": [
+      "###",
+      "###",
+      "###"
+    ],
+    "symbols": [
+      {
+        "symbol": "#",
+        "stack": {
+          "id": 32002,
+          "amount": 1,
+          "meta": 0
+        }
+      }
+    ],
+    "result": {
+      "id": 3201,
+      "amount": 1,
+      "meta": 0
+    },
+    "consumeContainers": true
+  },
+  {
     "name": "textilemod:workbench/cottongin",
     "type": "minecraft:crafting/shaped",
     "pattern": [
