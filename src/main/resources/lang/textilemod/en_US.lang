@@ -5,3 +5,10 @@ tile.textilemod.cottonwool.name=Cotton Wool
 item.textilemod.cotton.name=Cotton
 item.textilemod.cottonSeeds.name=Cotton Seeds
 item.textilemod.cottonFiber.name=Cotton Fiber
+
+tile.textilemod.cottongin.desc=Makes your cotton into something useful.
+tile.textilemod.cottonwool.desc=Fluffy!
+
+item.textilemod.cotton.desc=A fluffy boil of cotton.
+item.textilemod.cottonSeeds.desc=Grows best under the warm summer sun.
+item.textilemod.cottonFiber=Cotton fibers ready for use.
