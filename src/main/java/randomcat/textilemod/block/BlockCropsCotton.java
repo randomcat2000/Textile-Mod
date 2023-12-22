@@ -55,9 +55,13 @@ public class BlockCropsCotton extends BlockFlower {
 		int idPosZ = world.getBlockId(x, y, z + 1);
 		int idNegX = world.getBlockId(x - 1, y, z);
 		int idPosX = world.getBlockId(x + 1, y, z);
+		int idNegZNegX = world.getBlockId(x - 1, y, z - 1);
+		int idPosZPosX = world.getBlockId(x + 1, y, z + 1);
+		int idNegXPosZ = world.getBlockId(x - 1, y, z + 1);
+		int idPosXNegZ = world.getBlockId(x + 1, y, z - 1);
 		float growthRateMod = 0.0f;
 		char alignment = (idNegZ == this.id || idPosZ == this.id) ? 'Z' : 'X';
-		if (!(idNegZ == this.id) && !(idPosZ == this.id) && !(idNegX == this.id) && !(idPosX == this.id)) {
+		if ((!(idNegZ == this.id) && !(idPosZ == this.id) && !(idNegX == this.id) && !(idPosX == this.id)) || (idNegZNegX == this.id || idPosZPosX == this.id || idNegXPosZ == this.id || idPosXNegZ == this.id)) {
             alignment = 'n';
         }
 		//check row
@@ -100,7 +104,7 @@ public class BlockCropsCotton extends BlockFlower {
 		}
 		return new ItemStack[]{new ItemStack(TextileItems.cotton, world.rand.nextInt(2) + 2)};
 	}
-	//debug option TODO: Comment out
+	//debug option
 	/*@Override
 	public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
 		int l = world.getBlockMetadata(x, y, z);

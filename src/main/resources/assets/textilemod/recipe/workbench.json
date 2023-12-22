@@ -10,14 +10,14 @@
       {
         "symbol": "#",
         "stack": {
-          "id": 32002,
+          "key": "item.textilemod.cottonFiber",
           "amount": 1,
           "meta": 0
         }
       }
     ],
     "result": {
-      "id": 16415,
+      "key": "item.string",
       "amount": 1,
       "meta": 0
     },
@@ -33,14 +33,43 @@
       {
         "symbol": "#",
         "stack": {
-          "id": 32002,
+          "key": "item.textilemod.cottonFiber",
           "amount": 1,
           "meta": 0
         }
       }
     ],
     "result": {
-      "id": 16415,
+      "key": "item.string",
+      "amount": 1,
+      "meta": 0
+    },
+    "consumeContainers": true
+  },
+  {
+    "name": "textilemod:workbench/cottonseeds",
+    "type": "minecraft:crafting/shaped",
+    "pattern": [
+      " W ",
+      "WSW",
+      " W "
+    ],
+    "symbols": [
+      {
+        "symbol": "W",
+        "group": "minecraft:wools"
+      },
+      {
+        "symbol": "S",
+        "stack": {
+          "key": "item.seeds.wheat",
+          "amount": 1,
+          "meta": 0
+        }
+      }
+    ],
+    "result": {
+      "key": "item.textilemod.cottonSeeds",
       "amount": 1,
       "meta": 0
     },
@@ -58,14 +87,14 @@
       {
         "symbol": "#",
         "stack": {
-          "id": 32002,
+          "key": "item.textilemod.cottonFiber",
           "amount": 1,
           "meta": 0
         }
       }
     ],
     "result": {
-      "id": 3201,
+      "key": "tile.textilemod.cottonwool",
       "amount": 1,
       "meta": 0
     },
@@ -75,22 +104,30 @@
     "name": "textilemod:workbench/cottongin",
     "type": "minecraft:crafting/shaped",
     "pattern": [
-      "###",
-      "%%%",
-      "###"
+      "AAA",
+      "BBC",
+      "AAA"
     ],
     "symbols": [
       {
-        "symbol": "#",
+        "symbol": "B",
+        "stack": {
+          "key": "item.ingot.iron",
+          "amount": 1,
+          "meta": 0
+        }
+      },
+      {
+        "symbol": "A",
         "group": "minecraft:planks"
       },
       {
-        "symbol": "%",
+        "symbol": "C",
         "group": "minecraft:wools"
       }
     ],
     "result": {
-      "id": 3200,
+      "key": "tile.textilemod.cottongin",
       "amount": 1,
       "meta": 0
     },
