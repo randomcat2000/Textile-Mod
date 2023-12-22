@@ -20,3 +20,5 @@ planned:
 - carpet, similar to paintings but placeable on the ground or ceiling
 
 pretty usable now (serves an ingame function/niche) but still in very early stages
+
+requires HalpLibe 3.0.3 or above (https://github.com/Turnip-Labs/bta-halplibe)
