@@ -80,7 +80,7 @@
     "type": "minecraft:crafting/shaped",
     "pattern": [
       "###",
-      "###",
+      "# #",
       "###"
     ],
     "symbols": [

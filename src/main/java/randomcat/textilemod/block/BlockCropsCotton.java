@@ -67,18 +67,18 @@ public class BlockCropsCotton extends BlockFlower {
 		//check row
 		switch (alignment) {
 			case 'Z':
-				growthRateMod = (idNegZ == this.id && idPosZ == this.id) ? 2.0f : 1.0f;
+				growthRateMod = (idNegZ == this.id && idPosZ == this.id) ? 3.0f : 1.0f;
 				break;
 			case 'X':
-                growthRateMod = (idNegX == this.id && idPosX == this.id) ? 2.0f : 1.0f;
+                growthRateMod = (idNegX == this.id && idPosX == this.id) ? 3.0f : 1.0f;
 				break;
 			default:
 				break;
 		}
 		growthRate += growthRateMod;
 		if (world.seasonManager.getCurrentSeason() != null) {
-			if (world.seasonManager.getCurrentSeason() != OVERWORLD_SUMMER) {
-				growthRate /= 2.0f;
+			if (world.seasonManager.getCurrentSeason() == OVERWORLD_SUMMER) {
+				growthRate *= 2.0f;
 			}
 		}
 		//grows best in sunlight
