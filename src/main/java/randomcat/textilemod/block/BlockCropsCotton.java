@@ -43,7 +43,7 @@ public class BlockCropsCotton extends BlockFlower {
 		float f;
 		int l;
 		super.updateTick(world, x, y, z, rand);
-		if (world.getBlockLightValue(x, y + 1, z) >= 12 && (l = world.getBlockMetadata(x, y, z)) < 6 && rand.nextInt((int)(100.0f / (f = this.getGrowthRate(world, x, y, z)))) == 0) {
+		if (world.getBlockLightValue(x, y + 1, z) >= 12 && (l = world.getBlockMetadata(x, y, z)) < 6 && world.getBlockMetadata(x, y - 1, z) > 0 && rand.nextInt((int)(100.0f / (f = this.getGrowthRate(world, x, y, z)))) == 0) {
 			world.setBlockMetadataWithNotify(x, y, z, ++l);
 		}
 	}
@@ -102,7 +102,7 @@ public class BlockCropsCotton extends BlockFlower {
 		if (meta != 5) {
 			return new ItemStack[]{new ItemStack(TextileItems.cottonSeeds)};
 		}
-		return new ItemStack[]{new ItemStack(TextileItems.cotton, world.rand.nextInt(2) + 2)};
+		return new ItemStack[]{new ItemStack(TextileItems.cotton, world.rand.nextInt(4) + 4)};
 	}
 	//debug option
 	/*@Override
